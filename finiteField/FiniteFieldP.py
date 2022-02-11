@@ -31,15 +31,11 @@ class FiniteFieldPElement:
     def __sub__(self, other):
         return FiniteFieldPElement(self.parent, (self.rep - other.rep) % self.p)
 
-    def __div__(self, other):
+    def __truediv__(self, other):
         try:
-            return FiniteFieldPElement(self.parent, (self.rep / other.rep) % self.p)
+            return FiniteFieldPElement(self.parent, self.rep.__pow__(other.rep, self.p))
         except ZeroDivisionError:
             print('Cannot divide by zero')
-
-    # Magic????
-    def __truediv__(self, other):
-        pass
 
     def __neg__(self):
         return FiniteFieldPElement(self.parent, -self.p)
@@ -48,3 +44,4 @@ class FiniteFieldPElement:
         if isinstance(other, FiniteFieldPElement) and self.rep == other.rep:
             return True
         return False
+
