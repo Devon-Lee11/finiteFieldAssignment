@@ -38,7 +38,7 @@ class FiniteFieldPElement:
             print('Cannot divide by zero')
 
     def __neg__(self):
-        return FiniteFieldPElement(self.parent, -self.p)
+        return FiniteFieldPElement(self.parent, -self.rep)
 
     def __eq__(self, other):
         if isinstance(other, FiniteFieldPElement) and self.rep == other.rep:
