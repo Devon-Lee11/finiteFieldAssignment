@@ -42,7 +42,7 @@ class FiniteFieldPElement:
         pass
 
     def __neg__(self):
-        return FiniteFieldPElement(self.parent, (-self.p) % self.p)
+        return FiniteFieldPElement(self.parent, -self.p)
 
     def __eq__(self, other):
         if isinstance(other, FiniteFieldPElement) and self.rep == other.rep:
